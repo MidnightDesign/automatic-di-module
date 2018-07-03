@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 
 namespace Midnight\AutomaticDiModule;
 
@@ -7,7 +7,10 @@ use Midnight\AutomaticDi\AutomaticDiConfig;
 
 class AutomaticDiConfigFactory
 {
-    public function __invoke(ContainerInterface $container):AutomaticDiConfig
+    /**
+     * @return AutomaticDiConfig
+     */
+    public function __invoke(ContainerInterface $container)
     {
         return AutomaticDiConfig::fromArray($container->get('Config')['di']);
     }

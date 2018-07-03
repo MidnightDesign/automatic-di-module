@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 
 namespace Midnight\AutomaticDiModule;
 
@@ -20,7 +20,10 @@ class AutomaticDiAbstractFactory implements AbstractFactoryInterface
         return $this->__invoke($serviceLocator, $requestedName);
     }
 
-    private function getContainer(ContainerInterface $container): AutomaticDiContainer
+    /**
+     * @return AutomaticDiContainer
+     */
+    private function getContainer(ContainerInterface $container)
     {
         if ($container instanceof AbstractPluginManager) {
             $container = $container->getServiceLocator();

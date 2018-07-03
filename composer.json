@@ -3,13 +3,13 @@
     "description": "Zend Framework Module for midnight/automatic-di",
     "type": "library",
     "require": {
-        "php": "^7.0",
-        "midnight/automatic-di": "^1.0",
-        "zendframework/zend-modulemanager": "^2.0",
-        "zendframework/zend-servicemanager": "^2.6|^3.0"
+        "php": "5.5.*",
+        "midnight/automatic-di": "dev-php5.5",
+        "zendframework/zend-modulemanager": "^2.7",
+        "zendframework/zend-servicemanager": "^3.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7"
+        "phpunit/phpunit": "^4.8"
     },
     "license": "MIT",
     "authors": [
@@ -18,7 +18,8 @@
             "email": "r.gottesheim@loot.at"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Midnight\\AutomaticDiModule\\": "src"
@@ -32,6 +33,12 @@
     "extra": {
         "zf": {
             "component": "Midnight\\AutomaticDiModule"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "5.5.9"
         }
     }
 }
