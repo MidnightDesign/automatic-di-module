@@ -10,9 +10,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Changed
 
--  migrates to Laminas
+- [#1](https://github.com/MidnightDesign/automatic-di-module/pull/1) migrates to Laminas
 
-- changes minimum PHP version to 7.4
+- [#1](https://github.com/MidnightDesign/automatic-di-module/pull/1) changes minimum PHP version to 7.4
 
 ### Deprecated
 
@@ -20,9 +20,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- removes dependency on laminas-modulemanager
+- [#1](https://github.com/MidnightDesign/automatic-di-module/pull/1) removes dependency on laminas-modulemanager
 
-- drops compatibility with laminas-servicemanager version 2
+- [#1](https://github.com/MidnightDesign/automatic-di-module/pull/1) drops compatibility with laminas-servicemanager version 2
 
 ### Fixed
 
