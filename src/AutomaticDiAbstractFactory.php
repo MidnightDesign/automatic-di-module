@@ -3,10 +3,10 @@
 namespace Midnight\AutomaticDiModule;
 
 use Interop\Container\ContainerInterface;
+use Laminas\ServiceManager\AbstractFactoryInterface;
+use Laminas\ServiceManager\AbstractPluginManager;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use Midnight\AutomaticDi\AutomaticDiContainer;
-use Zend\ServiceManager\AbstractFactoryInterface;
-use Zend\ServiceManager\AbstractPluginManager;
-use Zend\ServiceManager\ServiceLocatorInterface;
 
 class AutomaticDiAbstractFactory implements AbstractFactoryInterface
 {
