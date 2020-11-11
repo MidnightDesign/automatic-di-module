@@ -1,12 +1,15 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Midnight\AutomaticDiModule;
 
-use Laminas\ModuleManager\Feature\ConfigProviderInterface;
-
-class Module implements ConfigProviderInterface
+class Module
 {
-    public function getConfig()
+    /**
+     * @return array<string, mixed>
+     */
+    public function getConfig(): array
     {
         return include __DIR__ . '/../config/module.config.php';
     }

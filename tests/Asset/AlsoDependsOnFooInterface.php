@@ -1,11 +1,12 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace MidnightTest\AutomaticDiModule\Asset;
 
 class AlsoDependsOnFooInterface
 {
-    /** @var FooInterface */
-    private $foo;
+    private FooInterface $foo;
 
     public function __construct(FooInterface $foo)
     {

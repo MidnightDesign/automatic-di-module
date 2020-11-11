@@ -1,11 +1,12 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace MidnightTest\AutomaticDiModule\Asset;
 
 class DependsOnFoo
 {
-    /** @var Foo */
-    private $foo;
+    private Foo $foo;
 
     public function __construct(Foo $foo)
     {
