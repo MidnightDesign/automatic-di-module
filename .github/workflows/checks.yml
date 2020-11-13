@@ -27,7 +27,9 @@ jobs:
 
       - name: Ignore Plaform Reqs if on PHP8
         if: ${{ matrix.php == '8.0' }}
-        run: echo "COMPOSER_ARGS=--ignore-platform-reqs" >> $GITHUB_ENV
+        run: |
+          echo "COMPOSER_ARGS=--ignore-platform-reqs" >> $GITHUB_ENV
+          composer self-update --2
 
       - name: Composer Cache
         uses: actions/cache@v2
