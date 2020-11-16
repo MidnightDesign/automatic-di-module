@@ -1,16 +1,7 @@
 {
     "name": "midnight/automatic-di-module",
-    "description": "Zend Framework Module for midnight/automatic-di",
     "type": "library",
-    "require": {
-        "php": "^7.0",
-        "midnight/automatic-di": "^1.0",
-        "zendframework/zend-modulemanager": "^2.0",
-        "zendframework/zend-servicemanager": "^2.6|^3.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^5.7"
-    },
+    "description": "Laminas Module for midnight/automatic-di",
     "license": "MIT",
     "authors": [
         {
@@ -18,7 +9,29 @@
             "email": "r.gottesheim@loot.at"
         }
     ],
-    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.4",
+        "container-interop/container-interop": "^1.2",
+        "laminas/laminas-servicemanager": "^3.0",
+        "midnight/automatic-di": "^1.0"
+    },
+    "require-dev": {
+        "eventjet/coding-standard": "^3.2",
+        "infection/infection": "^0.20.0",
+        "maglnet/composer-require-checker": "^2.1",
+        "phpstan/extension-installer": "^1.0",
+        "phpstan/phpstan": "^0.12.32",
+        "phpstan/phpstan-strict-rules": "^0.12.2",
+        "phpunit/phpunit": "^9.3"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laminas": {
+            "component": "Midnight\\AutomaticDiModule"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Midnight\\AutomaticDiModule\\": "src"
@@ -29,9 +42,20 @@
             "MidnightTest\\AutomaticDiModule\\": "tests"
         }
     },
-    "extra": {
-        "zf": {
-            "component": "Midnight\\AutomaticDiModule"
-        }
+    "minimum-stability": "stable",
+    "scripts": {
+        "check": [
+            "@check-deps",
+            "@cs-check",
+            "@phpstan",
+            "@phpunit",
+            "@infection"
+        ],
+        "check-deps": "vendor/bin/composer-require-checker",
+        "cs-check": "vendor/bin/phpcs",
+        "cs-fix": "vendor/bin/phpcbf",
+        "infection": "vendor/bin/infection --threads=4",
+        "phpstan": "vendor/bin/phpstan analyse",
+        "phpunit": "vendor/bin/phpunit"
     }
 }
