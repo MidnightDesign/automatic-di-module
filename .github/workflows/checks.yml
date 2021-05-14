@@ -31,7 +31,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer update --no-progress --no-suggest --no-interaction ${{ matrix.prefer_lowest }} > /dev/null
+          composer update --no-progress --no-interaction ${{ matrix.prefer_lowest }} > /dev/null
 
       - name: Static analysis
         run: |
