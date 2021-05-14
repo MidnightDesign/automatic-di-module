@@ -21,13 +21,13 @@ class AutomaticDiAbstractFactory implements AbstractFactoryInterface
 
     /**
      * @param string $requestedName
-     * @param array<string, mixed>|mixed[]|null $options
+     * @param array<string, mixed>|array<mixed>|null $options
      * @return object
      * @phpcs:disable SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
      * @phpcs:disable SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint
      * @phpcs:disable SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue.NullabilitySymbolRequired
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         return $this->getContainer($container)->get($requestedName);
     }

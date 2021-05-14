@@ -8,6 +8,7 @@ jobs:
     strategy:
       matrix:
         php: ["7.4", "8.0"]
+        prefer_lowest: ["", "--prefer-lowest"]
 
     runs-on: ubuntu-latest
     container:
@@ -20,17 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Prepare environment
-        run: |
-          mkdir -p /root/.ssh
-          ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
-
-      - name: Ignore Plaform Reqs if on PHP8
-        if: ${{ matrix.php == '8.0' }}
-        run: |
-          echo "COMPOSER_ARGS=--ignore-platform-reqs" >> $GITHUB_ENV
-          composer self-update --2
-
       - name: Composer Cache
         uses: actions/cache@v2
         with:
@@ -41,7 +31,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer install --no-progress --no-suggest --no-interaction ${{ env.COMPOSER_ARGS }} > /dev/null
+          composer install --no-progress --no-suggest --no-interaction ${{ matrix.prefer_lowest }} > /dev/null
 
       - name: Static analysis
         run: |
