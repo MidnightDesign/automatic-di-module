@@ -1,8 +1,8 @@
 {
     "name": "midnight/automatic-di-module",
-    "type": "library",
     "description": "Laminas Module for midnight/automatic-di",
     "license": "MIT",
+    "type": "library",
     "authors": [
         {
             "name": "Rudolph Gottesheim",
@@ -16,22 +16,17 @@
         "midnight/automatic-di": "^1.0"
     },
     "require-dev": {
-        "eventjet/coding-standard": "^3.2",
-        "infection/infection": "^0.20.0",
-        "maglnet/composer-require-checker": "^3.0",
-        "phpstan/extension-installer": "^1.0",
-        "phpstan/phpstan": "^0.12.34",
-        "phpstan/phpstan-strict-rules": "^0.12.2",
-        "phpunit/phpunit": "^9.3"
+        "bnf/phpstan-psr-container": "^1.0",
+        "eventjet/coding-standard": "^3.9",
+        "infection/infection": "^0.26.6",
+        "maglnet/composer-require-checker": "^3.8",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan": "^1.8.8",
+        "phpstan/phpstan-phpunit": "^1.1",
+        "phpstan/phpstan-strict-rules": "^1.4.4",
+        "phpunit/phpunit": "^9.5.25"
     },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "laminas": {
-            "component": "Midnight\\AutomaticDiModule"
-        }
-    },
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "Midnight\\AutomaticDiModule\\": "src"
@@ -42,7 +37,20 @@
             "MidnightTest\\AutomaticDiModule\\": "tests"
         }
     },
-    "minimum-stability": "stable",
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ocramius/package-versions": true,
+            "infection/extension-installer": true,
+            "phpstan/extension-installer": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "laminas": {
+            "component": "Midnight\\AutomaticDiModule"
+        }
+    },
     "scripts": {
         "check": [
             "@check-deps",

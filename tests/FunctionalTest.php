@@ -18,6 +18,9 @@ use PHPUnit\Framework\TestCase;
 
 use function array_merge;
 
+/**
+ * @phpstan-type ContainerConfig array{service_manager: array<string, mixed>, di: array<string, mixed>}
+ */
 class FunctionalTest extends TestCase
 {
     private const DI = [
@@ -41,25 +44,23 @@ class FunctionalTest extends TestCase
 
     public function testGetClassWithoutDependencies(): void
     {
-        $service = $this->container->get(NoDependencies::class);
+        $this->container->get(NoDependencies::class);
 
-        self::assertInstanceOf(NoDependencies::class, $service);
+        $this->expectNotToPerformAssertions();
     }
 
     public function testInjectInterface(): void
     {
         $service = $this->container->get(DependsOnFooInterface::class);
 
-        self::assertInstanceOf(DependsOnFooInterface::class, $service);
         self::assertInstanceOf(Foo::class, $service->getFoo());
     }
 
     public function testInjectClass(): void
     {
-        $service = $this->container->get(DependsOnFoo::class);
+        $this->container->get(DependsOnFoo::class);
 
-        self::assertInstanceOf(DependsOnFoo::class, $service);
-        self::assertInstanceOf(Foo::class, $service->getFoo());
+        $this->expectNotToPerformAssertions();
     }
 
     public function testGetInterface(): void
@@ -73,12 +74,11 @@ class FunctionalTest extends TestCase
     {
         $service = $this->container->get(AlsoDependsOnFooInterface::class);
 
-        self::assertInstanceOf(AlsoDependsOnFooInterface::class, $service);
         self::assertInstanceOf(AlternateFoo::class, $service->getFoo());
     }
 
     /**
-     * @param array<string, mixed> $config
+     * @param ContainerConfig $config
      */
     protected function createServiceManager(array $config): ServiceManager
     {
@@ -88,12 +88,13 @@ class FunctionalTest extends TestCase
     }
 
     /**
-     * @return array<string, mixed>
+     * @return ContainerConfig
      */
     private function createConfig(): array
     {
         $module = new Module();
         $config = $module->getConfig();
+        /** @var ContainerConfig $config */
         $config = array_merge($config, ['di' => self::DI]);
         return $config;
     }

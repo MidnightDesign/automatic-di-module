@@ -7,15 +7,12 @@ jobs:
 
     strategy:
       matrix:
-        php: ["7.4", "8.0"]
+        php: ["7.4", "8.0", "8.1"]
         prefer_lowest: ["", "--prefer-lowest"]
 
     runs-on: ubuntu-latest
     container:
       image: eventjet/checks-${{ matrix.php }}:latest
-
-    env:
-      COMPOSER_ARGS: ''
 
     steps:
       - name: Checkout
@@ -49,6 +46,9 @@ jobs:
         uses: slavcodev/coverage-monitor-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          clover_file: "coverage.xml"
-          threshold_alert: 99
-          threshold_warning: 99
+          coverage_path: "coverage.xml"
+          comment: false
+          comment_context: Coverage PHP ${{ matrix.php }} ${{ matrix.prefer-lowest }}
+          status_context: Coverage PHP ${{ matrix.php }} ${{ matrix.prefer-lowest }}
+          threshold_alert: 100
+          threshold_warning: 100

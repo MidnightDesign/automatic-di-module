@@ -11,6 +11,15 @@ class AutomaticDiConfigFactory
 {
     public function __invoke(ContainerInterface $container): AutomaticDiConfig
     {
-        return AutomaticDiConfig::fromArray($container->get('Config')['di']);
+        /**
+         * @var array{
+         *     di: array{
+         *         preferences: array<class-string, class-string>,
+         *         classes: array<class-string, array<string, class-string>>
+         *     }
+         * } $config
+         */
+        $config = $container->get('Config');
+        return AutomaticDiConfig::fromArray($config['di']);
     }
 }
