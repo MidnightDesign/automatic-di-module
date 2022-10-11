@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Midnight\AutomaticDiModule;
 
-use Interop\Container\ContainerInterface;
 use Midnight\AutomaticDi\AutomaticDiConfig;
 use Midnight\AutomaticDi\AutomaticDiContainer;
+use Psr\Container\ContainerInterface;
 
 class AutomaticDiContainerFactory
 {

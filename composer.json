@@ -11,9 +11,9 @@
     ],
     "require": {
         "php": "^7.4 || ^8.0",
-        "container-interop/container-interop": "^1.2",
-        "laminas/laminas-servicemanager": "^3.0",
-        "midnight/automatic-di": "^1.0"
+        "laminas/laminas-servicemanager": "^3.11",
+        "midnight/automatic-di": "^1.0",
+        "psr/container": "^1.1"
     },
     "require-dev": {
         "bnf/phpstan-psr-container": "^1.0",
