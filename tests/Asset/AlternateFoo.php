@@ -6,5 +6,4 @@ namespace MidnightTest\AutomaticDiModule\Asset;
 
 class AlternateFoo implements FooInterface
 {
-
 }

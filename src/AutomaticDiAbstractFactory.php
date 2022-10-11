@@ -29,7 +29,9 @@ class AutomaticDiAbstractFactory implements AbstractFactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
-        return $this->getContainer($container)->get($requestedName);
+        /** @var object $instance */
+        $instance = $this->getContainer($container)->get($requestedName);
+        return $instance;
     }
 
     private function getContainer(ContainerInterface $container): AutomaticDiContainer
