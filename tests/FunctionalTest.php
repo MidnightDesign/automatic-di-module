@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace MidnightTest\AutomaticDiModule;
 
-use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\ServiceManager;
 use Midnight\AutomaticDiModule\Module;
 use MidnightTest\AutomaticDiModule\Asset\AlsoDependsOnFooInterface;
@@ -15,6 +14,7 @@ use MidnightTest\AutomaticDiModule\Asset\Foo;
 use MidnightTest\AutomaticDiModule\Asset\FooInterface;
 use MidnightTest\AutomaticDiModule\Asset\NoDependencies;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
 
 use function array_merge;
 
