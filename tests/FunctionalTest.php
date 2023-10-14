@@ -84,7 +84,7 @@ class FunctionalTest extends TestCase
     protected function createServiceManager(array $config): ServiceManager
     {
         /** @var ServiceManagerConfiguration $serviceManagerConfig */
-        $serviceManagerConfig = $config['service_manager']; // @phpstan-ignore-line seems to be some weird bug
+        $serviceManagerConfig = $config['service_manager']; // @phpstan-ignore-line https://github.com/laminas/laminas-servicemanager/issues/212
         $container = new ServiceManager($serviceManagerConfig);
         $container->setService('Config', $config);
         return $container;
