@@ -4,15 +4,13 @@
     bootstrap="vendor/autoload.php"
     beStrictAboutChangesToGlobalState="true"
     beStrictAboutOutputDuringTests="true"
-    verbose="true"
-    convertDeprecationsToExceptions="true"
 >
     <testsuite name="Midnight\AutomaticDiModule">
         <directory>tests</directory>
     </testsuite>
-    <coverage>
+    <source>
         <include>
             <directory>src</directory>
         </include>
-    </coverage>
+    </source>
 </phpunit>
