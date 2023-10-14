@@ -36,7 +36,7 @@ jobs:
       - name: Static analysis
         run: |
           composer check-deps
-          composer cs-check
+          PHP_CS_FIXER_IGNORE_ENV=1 composer cs-check
           composer phpstan -- --no-progress
 
       - name: Tests
