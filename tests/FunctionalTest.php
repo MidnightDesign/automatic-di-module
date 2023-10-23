@@ -19,6 +19,7 @@ use Psr\Container\ContainerInterface;
 use function array_merge;
 
 /**
+ * @phpstan-import-type ServiceManagerConfiguration from ServiceManager
  * @phpstan-type ContainerConfig array{service_manager: array<string, mixed>, di: array<string, mixed>}
  */
 class FunctionalTest extends TestCase
@@ -82,7 +83,9 @@ class FunctionalTest extends TestCase
      */
     protected function createServiceManager(array $config): ServiceManager
     {
-        $container = new ServiceManager($config['service_manager']);
+        /** @var ServiceManagerConfiguration $serviceManagerConfig */
+        $serviceManagerConfig = $config['service_manager']; // @phpstan-ignore-line https://github.com/laminas/laminas-servicemanager/issues/212
+        $container = new ServiceManager($serviceManagerConfig);
         $container->setService('Config', $config);
         return $container;
     }

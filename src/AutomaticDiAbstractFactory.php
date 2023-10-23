@@ -10,24 +10,12 @@ use Psr\Container\ContainerInterface;
 
 class AutomaticDiAbstractFactory implements AbstractFactoryInterface
 {
-    /**
-     * @param string $requestedName
-     * @phpcs:disable SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
-     */
     public function canCreate(ContainerInterface $container, $requestedName): bool
     {
         return $this->getContainer($container)->has($requestedName);
     }
 
-    /**
-     * @param string $requestedName
-     * @param array<string, mixed>|array<mixed>|null $options
-     * @return object
-     * @phpcs:disable SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
-     * @phpcs:disable SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint
-     * @phpcs:disable SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue.NullabilitySymbolRequired
-     */
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): object
     {
         /** @var object $instance */
         $instance = $this->getContainer($container)->get($requestedName);
